@@ -1,6 +1,6 @@
 This folder contains solutions for week1 programming assignments.
 I use python to solve these questions. 
-If you are not familiar with pandas, you can refer http://pandas.pydata.org/
+If you are not familiar with pandas, you can refer to http://pandas.pydata.org/
 
 ----------------------------------files--------------------------------------
 jobs.txt  This file is the data for first two questions.
