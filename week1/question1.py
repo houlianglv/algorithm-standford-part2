@@ -29,9 +29,8 @@ def calculateWl(data):
     #data is the result of preprocessData()
     #wl means weight*completeTime
     data['wl'] = 0
-    sumTime = 0
+    sum_time = 0
     for row in data.iterrows():
-        sumTime += row[1]['length']
-        row[1]['wl'] = sumTime*row[1]['weight']
+        sum_time += row[1]['length']
+        row[1]['wl'] = sum_time*row[1]['weight']
     return sum(data['wl'])
-

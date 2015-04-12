@@ -4,7 +4,7 @@ class Node(object):
         self.id = id
         self.edges = []
         for edge in edges:
-            self.__edges.append(edge)
+            self.edges.append(edge)
         self.__isProcessed = False
 
     def addEdge(self, edge):

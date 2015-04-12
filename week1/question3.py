@@ -22,7 +22,7 @@
 # and you'll probably need to maintain some kind of mapping between vertices and their positions in the heap.
 import pandas as pd
 import sys
-from Graph import *
+from Graph import Node, Edge
 
 def loadGraph():
     number_of_nodes = 500
@@ -43,37 +43,37 @@ def loadGraph():
     return graph, edges
 
 def generateMST(graph):
-    MST = []
-    nodeInMST = []
-    edgeToAdd = []
-    startNode = graph[0]
-    startNode.processed()
-    edges = startNode.getEdges()
-    edgeToAdd.extend(edges)
-    nodeInMST.append(startNode)
-    while(len(nodeInMST)<len(graph)):
-        minCost = sys.maxint
-        minEdge = None
-        for edge in edgeToAdd:
-            if edge.getCost() < minCost and not edge.isInvalid():
+    mst = []
+    node_in_mst = []
+    edge_to_add = []
+    start_node = graph[0]
+    start_node.processed()
+    edges = start_node.getEdges()
+    edge_to_add.extend(edges)
+    node_in_mst.append(start_node)
+    while len(node_in_mst) < len(graph):
+        min_cost = sys.maxint
+        min_edge = None
+        for edge in edge_to_add:
+            if edge.getCost() < min_cost and not edge.isInvalid():
                 # print edge.getCost()
-                minCost = edge.getCost()
-                minEdge = edge
-        MST.append(minEdge)
-        vertex = minEdge.getVertexs()
-        for id in vertex:
-            if not graph[id-1].isProcessed():
-                nodeInMST.append(graph[id-1])
-                graph[id-1].processed()
-                edges = graph[id-1].getEdges()
+                min_cost = edge.getCost()
+                min_edge = edge
+        mst.append(min_edge)
+        vertex = min_edge.getVertexs()
+        for v in vertex:
+            if not graph[v-1].isProcessed():
+                node_in_mst.append(graph[v-1])
+                graph[v-1].processed()
+                edges = graph[v-1].getEdges()
                 for edge in edges:
                     if not edge.isInvalid():
-                        edgeToAdd.append(edge)
-    return MST
+                        edge_to_add.append(edge)
+    return mst
 
 def sum(mst):
-    sum = 0
+    total = 0
     for edge in mst:
-        sum += edge.getCost()
-    return sum
+        total += edge.getCost()
+    return total
 
