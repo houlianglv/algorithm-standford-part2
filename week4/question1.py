@@ -12,7 +12,7 @@
 # OPTIONAL: If you want a bigger data set to play with, try computing the shortest shortest path for this graph.
 import pandas as pd
 import numpy as np
-from Graph import Node, Edge
+from Graph import Edge
 
 def load_data(file_name):
     """load graph data from file"""
@@ -38,17 +38,9 @@ def floyd_warshall(number_of_nodes, graph_edges):
                 array[i, j, 1] = min(array[i, j, 0], array[i, k, 0] + array[k, j, 0])
                 if i == j and array[i, j, 1] < 0:
                     print "negative circle detected!", "i=", i, "j=", j, "k=", k
-                    return []
+                    return np.array([])
         array[:, :, 0] = array[:, :, 1]
     return array[:, :, 0]
-
-def check_negtive_value(new_layer_of_array):
-    """check the new generated layer to detect the negative circle"""
-    size = new_layer_of_array.shape[0]
-    for i in range(1, size):
-        if new_layer_of_array[i, i] < 0:
-            return True
-    return False
 
 
 
