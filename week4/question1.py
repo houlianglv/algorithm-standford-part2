@@ -10,6 +10,7 @@
 # OPTIONAL: You can use whatever algorithm you like to solve this question. If you have extra time, try comparing the performance of different all-pairs shortest-path algorithms!
 
 # OPTIONAL: If you want a bigger data set to play with, try computing the shortest shortest path for this graph.
+# the answer for this question is that g1, g2 contains negative cost circle and the shortest shortest path for g3 is -19
 import pandas as pd
 import numpy as np
 from Graph import Edge
